@@ -10,7 +10,7 @@ class GithubViewModel extends ChangeNotifier {
   String? _error;
 
   GithubViewModel() {
-    fetchUser("Lion2555"); // твій GitHub username
+    fetchUser("Lion2555");
   }
 
   Future<void> fetchUser(String username) async {

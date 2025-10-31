@@ -34,4 +34,23 @@ class UserRepository {
 
   List<UserModel> getAllUsers() => _users;
   UserModel getUserById(String id) => _users.firstWhere((user) => user.id == id);
+
+  void addUser(UserModel user) {
+    _users.add(user);
+  }
+
+  UserModel duplicateUser(String id) {
+    final original = getUserById(id);
+    final newUser = UserModel(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      name: "${original.name} (копія)",
+      profession: original.profession,
+      about: original.about,
+      email: original.email,
+      phone: original.phone,
+      linkedIn: original.linkedIn,
+    );
+    _users.add(newUser);
+    return newUser;
+  }
 }

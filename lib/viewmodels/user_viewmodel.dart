@@ -18,4 +18,16 @@ class UserViewModel extends ChangeNotifier {
     _selectedUser = _repository.getUserById(id);
     return _selectedUser!;
   }
+
+  void addUser(UserModel user) {
+    _repository.addUser(user);
+    _users = _repository.getAllUsers();
+    notifyListeners();
+  }
+
+  void duplicateUser(String id) {
+    _repository.duplicateUser(id);
+    _users = _repository.getAllUsers();
+    notifyListeners();
+  }
 }

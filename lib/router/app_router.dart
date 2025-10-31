@@ -17,7 +17,7 @@ class AppRouter {
         builder: (context, state) {
           final id = state.pathParameters['id']!;
           if (id == '1') {
-            return const LevKorolyukPage(); // окремо для тебе
+            return const LevKorolyukPage();
           }
           return DetailsPage(userId: id);
         },

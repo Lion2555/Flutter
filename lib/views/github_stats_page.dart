@@ -50,7 +50,6 @@ class GithubStatsPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () async {
                     final url = Uri.parse(viewModel.user!.htmlUrl);
-                    // відкриття посилання можеш додати пізніше через url_launcher
                   },
                   child: const Text('Відкрити GitHub профіль'),
                 ),
