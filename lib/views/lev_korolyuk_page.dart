@@ -9,7 +9,7 @@ class LevKorolyukPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final githubVm = context.watch<GithubViewModel>();
-    final userVm = context.read<UserViewModel>();
+    final userVm = context.watch<UserViewModel>();
     final user = userVm.getUserById('1');
 
     return Scaffold(

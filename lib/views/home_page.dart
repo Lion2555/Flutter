@@ -11,6 +11,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userVm = context.watch<UserViewModel>();
+
+    if (userVm.isLoading) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
     final users = userVm.users;
 
     return Scaffold(
