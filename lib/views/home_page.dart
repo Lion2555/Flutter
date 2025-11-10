@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import '../viewmodels/user_viewmodel.dart';
 import '../models/user_model.dart';
+import '../viewmodels/theme_viewmodel.dart';
 import 'add_resume_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,6 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userVm = context.watch<UserViewModel>();
+    final themeVm = context.watch<ThemeViewModel>();
 
     if (userVm.isLoading) {
       return const Scaffold(
@@ -24,6 +26,15 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Список резюме'),
         actions: [
+          IconButton(
+            icon: Icon(
+              themeVm.isDarkMode ? Icons.dark_mode : Icons.light_mode,
+            ),
+            tooltip: 'Перемкнути тему',
+            onPressed: () {
+              themeVm.toggleTheme();
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.add),
             tooltip: 'Додати нове резюме',

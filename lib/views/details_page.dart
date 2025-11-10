@@ -12,19 +12,21 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final userVm = context.watch<UserViewModel>();
     final user = userVm.getUserById(userId);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: colorScheme.surface,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
+        backgroundColor: colorScheme.surface,
         elevation: 1,
         titleSpacing: 0,
         title: Row(
           children: [
             IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                  color: Colors.indigo),
+              icon: Icon(Icons.arrow_back_ios_new_rounded,
+                  color: colorScheme.primary),
               tooltip: 'Назад до списку резюме',
               onPressed: () {
                 context.go('/');
@@ -33,10 +35,10 @@ class DetailsPage extends StatelessWidget {
             const SizedBox(width: 8),
             Text(
               user.name,
-              style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black87,
-                  fontSize: 18),
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.w600,
+                color: colorScheme.onSurface,
+              ),
             ),
           ],
         ),
@@ -44,6 +46,7 @@ class DetailsPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Card(
+          color: colorScheme.surfaceContainerHighest,
           elevation: 3,
           shape:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -51,17 +54,17 @@ class DetailsPage extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: ListView(
               children: [
-                _infoRow('Ім’я', user.name),
-                _infoRow('Професія', user.profession),
-                _infoRow('Про себе', user.about),
-                _infoRow('Email', user.email),
-                _infoRow('Телефон', user.phone),
-                _infoRow('LinkedIn', user.linkedIn),
+                _infoRow(context, 'Ім’я', user.name),
+                _infoRow(context, 'Професія', user.profession),
+                _infoRow(context, 'Про себе', user.about),
+                _infoRow(context, 'Email', user.email),
+                _infoRow(context, 'Телефон', user.phone),
+                _infoRow(context, 'LinkedIn', user.linkedIn),
                 const SizedBox(height: 30),
                 Center(
                   child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.indigo,
+                      backgroundColor: colorScheme.primary,
                       padding: const EdgeInsets.symmetric(
                           horizontal: 24, vertical: 12),
                       shape: RoundedRectangleBorder(
@@ -69,10 +72,11 @@ class DetailsPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () => context.go('/'),
-                    icon: const Icon(Icons.home, color: Colors.white),
-                    label: const Text(
+                    icon: Icon(Icons.home, color: colorScheme.onPrimary),
+                    label: Text(
                       'Повернутись на головну',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(
+                          color: colorScheme.onPrimary, fontSize: 16),
                     ),
                   ),
                 ),
@@ -84,19 +88,28 @@ class DetailsPage extends StatelessWidget {
     );
   }
 
-  Widget _infoRow(String title, String value) {
+  Widget _infoRow(BuildContext context, String title, String value) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold, color: Colors.grey)),
+          Text(
+            title,
+            style: theme.textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: colorScheme.outline,
+            ),
+          ),
           const SizedBox(height: 6),
           Text(
             value,
-            style: const TextStyle(fontSize: 16, color: Colors.black87),
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: colorScheme.onSurface,
+            ),
           ),
         ],
       ),
