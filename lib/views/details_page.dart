@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../viewmodels/user_viewmodel.dart';
-import '../models/user_model.dart';
 import 'package:go_router/go_router.dart';
 
 class DetailsPage extends StatelessWidget {
