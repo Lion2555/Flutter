@@ -2,7 +2,7 @@ name: Deploy TWIP Path WEB app to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
       - name: Setup sqlite db
         run: dart run sqflite_common_ffi_web:setup
       - name: Build web app
-        run: flutter build web --base-href "/twip_app/"
+        run: flutter build web --base-href "/Flutter/"
       - name: Upload static files as artifact
         uses: actions/upload-pages-artifact@v3
         with:
