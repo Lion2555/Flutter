@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:resume_builder/viewmodels/theme_viewmodel.dart';
+import 'package:sample_app/viewmodels/theme_viewmodel.dart';
 
 void main() {
   group('ThemeViewModel Tests', () {
