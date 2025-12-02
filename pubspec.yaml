@@ -1,30 +1,27 @@
-name: sample_app
-description: "A new Flutter project."
+name: resume_builder
+description: "A Resume Builder project with MVVM architecture."
 publish_to: "none"
-version: 0.1.0
+version: 1.0.0+1
 
 environment:
-  sdk: ^3.9.0
+  sdk: ^3.0.0
 
 dependencies:
   flutter:
     sdk: flutter
-  english_words: ^4.0.0
   provider: ^6.1.5
   go_router: ^14.2.0
   http: ^1.2.2
-  uuid: ^3.0.7
   shared_preferences: ^2.3.2
   path_provider: ^2.1.4
-  sqflite_common_ffi_web: ^0.3.1
-  dev_test: ^1.0.1
+  uuid: ^4.2.1
+  english_words: ^4.0.0
 
 dev_dependencies:
-  dev_test: ^1.0.1
   flutter_test:
     sdk: flutter
-  flutter_lints: ^6.0.0
-
+  flutter_lints: ^4.0.0
+  mocktail: ^1.0.3
 
 flutter:
   uses-material-design: true
